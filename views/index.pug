@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    div.text-center
+        form(class="form-signin" method="GET" action="/translate")
+            - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+            button(class=buttonClass type="submit") Try Translator
