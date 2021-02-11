@@ -1,0 +1,10 @@
+[
+    {
+      "translations": [
+        {
+          "text": "Esta es una prueba simple para recuperar JSON usando Fetch",
+          "to": "es"
+        }
+      ]
+    }
+]

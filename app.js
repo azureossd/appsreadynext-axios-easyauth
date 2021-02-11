@@ -5,18 +5,22 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const translateText = require('./translate.js');
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const axios = require('axios').default;
 const { v4: uuidv4 } = require('uuid');
+const fetch = require("node-fetch");
 
-var subscriptionKey = "213774178de74ca093625d834beb7670";
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
+var subscriptionKey = process.env.subscriptionKey;
 var endpoint = "https://api.cognitive.microsofttranslator.com";
 
 // Add your location, also known as region. The default is global.
 // This is required if using a Cognitive Services resource.
-var location = "westus2";
+var location = process.env.location;
 
 var app = express();
 
@@ -29,10 +33,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use(bodyParser.json());
+
+app.get('/face', (req, res)=>{
+  axios.get(req.headers.referer + '/testAxios.json')
+  .then(response => response.data)
+  .then(data => res.send(data));
+  
+})
+app.get('/analytics', (req, res)=>{
+  fetch(req.headers.referer + '/testFetch.json')
+  .then(response => response.json())
+  .then(data => res.send(data));
+  
+})
 app.get('/translate', function(req, res, next) {
   res.render('translate', { error: false });
 });

@@ -5,3 +5,10 @@ block content
         form(class="form-signin" method="GET" action="/translate")
             - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
             button(class=buttonClass type="submit") Try Translator
+                div.text-center
+        form(class="form-signin" method="GET" action="/analytics")
+            - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+            button(class=buttonClass type="submit") Test using Fetch
+        form(class="form-signin" method="GET" action="/face")
+            - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+            button(class=buttonClass type="submit") Test using Axios
