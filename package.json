@@ -13,7 +13,7 @@
     "express": "~4.22.1",
     "http-errors": "~1.6.2",
     "morgan": "~1.10.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.3.2",
     "pug": "2.0.0-beta11",
     "sbd": "^1.0.19",
     "uuid": "^8.3.2"
